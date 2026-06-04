@@ -130,24 +130,37 @@ FaceGate/
 
 ## 🚀 How to Run the Prototype
 
+To facilitate easy evaluation, the prototype is configured to run locally out-of-the-box, simulating both the on-device environment and the AWS cloud sync APIs.
+
 ### 1. Installation
-Clone the repository and install the dependencies:
+Install the required dependencies:
 ```bash
 npm install
 ```
 
-### 2. Start the Express Sync Backend
-Launch the mock server (running on port 3000) to accept sync payloads and write logs to `backend_db.json`:
+### 2. Start the Local Sync Backend (Terminal 1)
+Boot the REST API server on Port 3000 to receive sync payloads:
 ```bash
 npm run backend
 ```
 
-### 3. Start the Expo Dev Server
-Launch the React Native Expo packager in web mode:
+### 3. Start the Expo Web App (Terminal 2)
+Launch the React Native web preview:
 ```bash
 npx expo start --web
 ```
-Access the application preview at: **[http://localhost:8081](http://localhost:8081)**
+Open **[http://localhost:8081](http://localhost:8081)** in your browser.
+
+---
+
+## 🧪 Quick-Start Evaluation Flow
+
+Judges can verify the entire end-to-end local matching and cloud synchronization process:
+
+1. **Enroll User**: Go to **Enroll New User** in the browser. Enter an ID (e.g., `NHAI-2026-99`) and name. Click **Capture & Enroll** 3 times. The progress tracker will count up, average the facial embeddings, and save the credentials.
+2. **Face Scan (Auth)**: Go back and select **Start Face Scan**. Mirror your face in the oval guide. Perform the randomly generated liveness challenge and click **Simulate Action Check**. FaceGate will run the SQLite similarity engine and verify your identity under the enrolled name.
+3. **Sync Records**: Navigate to the **Sync Dashboard**. Click the top status badge to toggle the network to **ONLINE**. Press **Sync Now** to upload the logged events to the local Express backend, clearing the client-side queue.
+4. **Verify Database**: Open [backend_db.json](file:///C:/Users/karpe/FaceGate/backend_db.json) in your project folder to see the synced records written to the database.
 
 ---
 
@@ -158,5 +171,3 @@ For further details, consult the following technical guides:
 - ☁️ **[aws_deployment_guide.md](file:///C:/Users/karpe/FaceGate/docs/aws_deployment_guide.md)**: Step-by-step console guide for DynamoDB, Lambda, and API Gateway.
 - 📉 **[benchmarks.md](file:///C:/Users/karpe/FaceGate/docs/benchmarks.md)**: Device latencies, accuracy profiles, and hardware specs.
 - 💼 **[presentation_outline.md](file:///C:/Users/karpe/FaceGate/docs/presentation_outline.md)**: Hackathon presentation deck slide structure.
-#   F a c e G a t e - N H A I - h a c a k t h o n - 2 0 2 6  
- 
