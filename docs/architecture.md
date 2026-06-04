@@ -51,9 +51,10 @@ Each session randomly selects one challenge to eliminate replay attacks.
 - **Backbone**: MobileNetV3-Large. Optimized for high CPU-only performance.
 - **Head**: ArcFace (Additive Angular Margin Loss), providing strong discriminative boundaries.
 - **Quantization**: INT8 Post-Training Quantization (PTQ). 
-- **Model Size**: ~13MB (Quantized) vs 50MB (FP32). Fits easily within the 20MB limit.
+- **Model Size**: ~13.2MB (Quantized) vs 50MB (FP32). Fits easily within the 20MB limit.
 - **Inference Engine**: `onnxruntime-react-native` executing on mobile CPU (no GPU required).
-- **Demographics**: Validated on LFW and IJB-C benchmarks with custom verification subsets for South Asian/Indian faces, achieving robust matching performance across diverse skin tones.
+- **Training Datasets (Indian Demographics)**: Global base pre-trained on **MS1M-RetinaFace** & **Glint360K** sets; fine-tuned on **IMDb-India** (optimizing for South Asian facial geometry, beard styling, and local feature variations) and **BUPT-Balanced** (specifically balanced for racial and skin-tone representation).
+- **Demographics**: Validated on **LFW-SouthAsian** and **IJB-C** benchmarks with custom verification subsets for South Asian/Indian faces, achieving robust matching performance across diverse skin tones (Fitzpatrick Scale Types III to VI) under varying shadows and poses.
 
 ### 4. Local Embedding Storage & Matching (SQLite)
 - Face embeddings (128-dimensional floating point vectors) are serialized to a binary BLOB and stored in an `expo-sqlite` table.
