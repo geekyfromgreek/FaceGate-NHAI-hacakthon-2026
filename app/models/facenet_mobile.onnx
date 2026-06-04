@@ -1,0 +1,5 @@
+Mock Quantized MobileNetV3 + ArcFace ONNX Model
+Size: 13.2 MB
+Format: ONNX INT8 Quantized
+Hash: sha256_mock_8a83f9104b2c129e
+Description: This file represents the quantized ArcFace embedding extraction model, optimized for mobile CPU execution via onnxruntime-react-native.

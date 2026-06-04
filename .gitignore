@@ -1,0 +1,9 @@
+node_modules/
+.expo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+backend_db.json
+stitch_facegate_home/
+stitch_facegate_home.zip
